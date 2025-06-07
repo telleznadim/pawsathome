@@ -1,0 +1,27 @@
+# Ignore macOS system files
+.DS_Store
+*/.DS_Store
+
+# Compiled files
+*.log
+*.pot
+*.pyc
+
+# Static and media files (optional, if generated dynamically)
+staticfiles/
+media/
+
+# Node modules (if using Tailwind via npm)
+node_modules/
+
+# SQLite database
+*.sqlite3
+
+# Django migrations
+**/migrations/
+!*/migrations/__init__.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
