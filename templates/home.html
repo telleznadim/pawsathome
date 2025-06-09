@@ -1,0 +1,40 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Inicio - Paws at Home{% endblock %}
+
+{% block content %}
+
+
+<div class="flex flex-col items-center px-4 py-8 space-y-8">
+
+    <!-- Carousel -->
+    <div class="w-full max-w-4xl">
+        <!-- Apply aspect ratio to the container directly -->
+        <div class="relative overflow-hidden rounded-lg shadow-lg aspect-[16/9]">
+            <!-- Carousel track -->
+            <div class="carousel flex w-full h-full transition-all duration-700 ease-in-out cursor-pointer">
+                <!-- Images will fill the container -->
+                <img src="{% static 'images/carousel1.webp' %}" alt="Mascota 1" class="w-full h-full object-cover">
+                <img src="{% static 'images/carousel2.webp' %}" alt="Mascota 2" class="w-full h-full object-cover hidden">
+                <img src="{% static 'images/carousel3.webp' %}" alt="Mascota 3" class="w-full h-full object-cover hidden">
+            </div>
+            
+        </div>
+
+        <div class="flex justify-center mt-4 space-x-2" id="carousel-dots">
+            <!-- Dots will be created dynamically by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Logo and title -->
+    <div class="flex flex-col items-center space-y-4">
+        <img src="{% static 'images/logo_512.png' %}" alt="Paws at Home Logo" class="w-20 h-20">
+        <h1 class="text-3xl font-bold text-medium-green text-center">Bienvenido a Paws at Home</h1>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

@@ -8,3 +8,57 @@
   * the scope of this path.
   */
 @source "../../../**/*.{html,py,js}";
+
+/* Define your custom colors as CSS variables */
+:root {
+  --color-dark-green: #14372d;
+  --color-medium-green: #65a30d;
+  --color-light-green: #84cc16;
+}
+
+/* Create utility classes using those variables */
+@layer utilities {
+  /* Text colors */
+  .text-dark-green {
+    color: var(--color-dark-green);
+  }
+  .hover\:text-dark-green:hover {
+    color: var(--color-dark-green);
+  }
+
+  .text-medium-green {
+    color: var(--color-medium-green);
+  }
+  .hover\:text-medium-green:hover {
+    color: var(--color-medium-green);
+  }
+
+  .text-light-green {
+    color: var(--color-light-green);
+  }
+  .hover\:text-light-green:hover {
+    color: var(--color-light-green);
+  }
+
+  /* Background colors */
+  .bg-dark-green {
+    background-color: var(--color-dark-green);
+  }
+  .hover\:bg-dark-green:hover {
+    background-color: var(--color-dark-green);
+  }
+
+  .bg-medium-green {
+    background-color: var(--color-medium-green);
+  }
+  .hover\:bg-medium-green:hover {
+    background-color: var(--color-medium-green);
+  }
+
+  .bg-light-green {
+    background-color: var(--color-light-green);
+  }
+  .hover\:bg-light-green:hover {
+    background-color: var(--color-light-green);
+  }
+}
