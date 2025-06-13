@@ -4,6 +4,8 @@
 
 **Paws at Home**
 
+![Banner del Proyecto](theme/static/images/banner.jpg)
+
 ## 👨‍💻 Autores / Desarrolladores
 
 - **Daniel Triana**
