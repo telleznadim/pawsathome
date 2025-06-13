@@ -87,7 +87,7 @@ Puedes revisar los resultados de pruebas unitarias en el siguiente enlace de Goo
 
 ## ▶️ Video explicativo del proyecto (próximamente)
 
-🎥 [Ver en YouTube](https://www.youtube.com/watch?v=ENLACE_AQUI_CUANDO_ESTE_LISTO)
+🎥 [Ver en YouTube](https://youtu.be/THJDNn9FhaA)
 
 ---
 
