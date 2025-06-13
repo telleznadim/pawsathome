@@ -4,7 +4,7 @@
 
 **Paws at Home**
 
-![Banner del Proyecto](theme/static/images/banner.jpg)
+![Banner del Proyecto](theme/static/images/readme_banner.jpg)
 
 ## 👨‍💻 Autores / Desarrolladores
 
