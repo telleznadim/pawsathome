@@ -59,20 +59,34 @@ Solicitudes de servicio entre dueño y cuidador, con:
 
 ---
 
-## 🛠️ ¿Qué encontrarás en el repositorio?
+## 📋 Requisitos del proyecto y cumplimiento
 
-1. Aplicaciones Django:
-   - `accounts`: gestión de usuarios, perfiles y avatares.
-   - `petsitting`: modelos, vistas y formularios para mascotas, cuidadores y solicitudes.
-2. Plantillas HTML organizadas por funciones (listas, formularios, detalles).
-3. Tailwind CSS para estilos visuales modernos.
-4. Configuración de media y static para imágenes (avatares, mascotas, fotos de cuidadores).
+| Requisito                                                            | ¿Cumplido? | Descripción                                                                              |
+| -------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
+| 1. Diseño/Template no usado en clase con 4 opciones de menú          | ✅ Sí      | Menú superior con: Inicio, Mascotas, Cuidadores, Login/Register, y más                   |
+| 2. Login / Logout / Registro / Modificación de usuarios (con avatar) | ✅ Sí      | Login, Logout, Registro con selección de tipo (owner/sitter) y carga de imagen de perfil |
+| 3. CRUD de al menos 4 modelos, solo para usuarios logueados          | ✅ Sí      | CRUD completo para: Pet, PetOwnerProfile, PetSitterProfile y JobRequest                  |
+| 4. Página “Acerca de mí” con información del alumno                  | ✅ Sí      | Se encuentra en el sitio como página estática (acerca_de_mi.html)                        |
+| 5. Filtro de búsqueda (opcional)                                     | ✅ Sí      | Filtro de cuidadores por ciudad en la lista de Pet Sitters                               |
+
+---
+
+## 🧪 Resultados de pruebas unitarias
+
+Puedes revisar los resultados de pruebas unitarias en el siguiente enlace de Google Drive:  
+📁 [Ver resultados de pruebas](https://drive.google.com/drive/folders/1Y7wrpeScL7nyJEHFn_9VdWyKRbQVjitd?usp=drive_link)
+
+---
+
+## ▶️ Video explicativo del proyecto (próximamente)
+
+🎥 [Ver en YouTube](https://www.youtube.com/watch?v=ENLACE_AQUI_CUANDO_ESTE_LISTO)
 
 ---
 
 ## 📌 Enlace de vista previa
 
 Puedes usar la versión _preview_ activa durante los próximos 7 días en:  
-**[https://pawsathome.life/](https://pawsathome.life/)**
+🌐 **[https://pawsathome.life/](https://pawsathome.life/)**
 
 ---
