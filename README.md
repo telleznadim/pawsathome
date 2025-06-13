@@ -1,115 +1,78 @@
-# Paws at Home 🐾
+# 🐾 Paws at Home
 
-## English 🇺🇸
+## 📝 Nombre del proyecto
 
-Paws at Home is a Django-based web application that connects pet owners with reliable pet sitters. Whether it's for a few hours or several weeks, this platform helps match pet sitting needs with trustworthy individuals.
-
-### Features
-
-- User authentication (Signup, Login, Logout)
-- Create and manage pet sitting job posts
-- Profile management
-- Responsive design using TailwindCSS
-
-### Setup Instructions
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/paws-at-home.git
-cd paws-at-home
-```
-
-2. Create and activate a virtual environment:
-
-```bash
-python -m venv env
-source env/bin/activate  # On Windows use `env\Scripts\activate`
-```
-
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Run migrations:
-
-```bash
-python manage.py migrate
-```
-
-5. Start the development server:
-
-```bash
-python manage.py runserver
-```
-
-### Technologies Used
-
-- Django
-- Tailwind CSS
-- CKEditor
-- SQLite (default, can be changed)
-
-### License
-
-This project is open-source and available under the [MIT License](LICENSE).
+**Paws at Home**
 
 ---
 
-## Español 🇪🇸
+## 🎯 Objetivo funcional
 
-Paws at Home es una aplicación web basada en Django que conecta a dueños de mascotas con cuidadores confiables. Ya sea por unas horas o por varias semanas, esta plataforma ayuda a cubrir las necesidades de cuidado de mascotas de manera segura y eficaz.
+Paws at Home es una plataforma web hecha con Django que conecta a **dueños de mascotas** con **cuidadores disponibles**. Permite:
 
-### Funcionalidades
+- Registro y autenticación de usuarios como _Pet Owners_ o _Pet Sitters_
+- Crear y gestionar perfiles detallados (foto, ciudad, experiencia, tarifa, etc.)
+- Propietarios pueden registrar sus mascotas y contactar cuidadores
+- Cuidadores reciben y gestionan solicitudes de trabajos (estado: pendiente, aceptado, rechazado, completado)
+- Dueños pueden ver el historial de solicitudes enviadas
 
-- Autenticación de usuarios (Registro, Inicio de sesión, Cierre de sesión)
-- Crear y gestionar publicaciones de cuidado de mascotas
-- Gestión de perfiles
-- Diseño responsivo usando TailwindCSS
+**Vista previa activa**: [https://pawsathome.life/](https://pawsathome.life/) (disponible en línea por 7 días)
 
-### Instrucciones de instalación
+---
 
-1. Clona el repositorio:
+## 🗂️ Modelos principales
 
-```bash
-git clone https://github.com/yourusername/paws-at-home.git
-cd paws-at-home
-```
+### `CustomUser`
 
-2. Crea y activa un entorno virtual:
+Hereda de `AbstractUser` y añade el campo:
 
-```bash
-python -m venv env
-source env/bin/activate  # En Windows usa `env\Scripts\activate`
-```
+- `user_type`: indica si el usuario es **owner** o **sitter**.
 
-3. Instala las dependencias:
+### `PetOwnerProfile`
 
-```bash
-pip install -r requirements.txt
-```
+Relaciona un `CustomUser` con datos adicionales:
 
-4. Ejecuta las migraciones:
+- `user` (OneToOneField)
+- `phone_number` y `address`
 
-```bash
-python manage.py migrate
-```
+### `PetSitterProfile`
 
-5. Inicia el servidor de desarrollo:
+Perfil para cuidadores, incluye:
 
-```bash
-python manage.py runserver
-```
+- `user` (OneToOneField)
+- `bio`, `experience_years`, `hourly_rate`, `available`, `photo`, `city`
 
-### Tecnologías utilizadas
+### `Pet` (en app `petsitting`)
 
-- Django
-- Tailwind CSS
-- CKEditor
-- SQLite (por defecto, se puede cambiar)
+Representa una mascota, con campos:
 
-### Licencia
+- `name`, `species`, `breed`, `age`, `notes`, `photo`
+- `owner` (ForeignKey a `PetOwnerProfile`)
 
-Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](LICENSE).
+### `JobRequest`
+
+Solicitudes de servicio entre dueño y cuidador, con:
+
+- `owner`, `sitter`, `pets` (ManyToMany con `Pet`)
+- `start_date`, `end_date`, `message`, `status`
+- Campo de fecha `created_at`
+
+---
+
+## 🛠️ ¿Qué encontrarás en el repositorio?
+
+1. Aplicaciones Django:
+   - `accounts`: gestión de usuarios, perfiles y avatares.
+   - `petsitting`: modelos, vistas y formularios para mascotas, cuidadores y solicitudes.
+2. Plantillas HTML organizadas por funciones (listas, formularios, detalles).
+3. Tailwind CSS para estilos visuales modernos.
+4. Configuración de media y static para imágenes (avatares, mascotas, fotos de cuidadores).
+
+---
+
+## 📌 Enlace de vista previa
+
+Puedes usar la versión _preview_ activa durante los próximos 7 días en:  
+**[https://pawsathome.life/](https://pawsathome.life/)**
+
+---
