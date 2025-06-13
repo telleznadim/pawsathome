@@ -95,3 +95,46 @@ Puedes usar la versión _preview_ activa durante los próximos 7 días en:
 🌐 **[https://pawsathome.life/](https://pawsathome.life/)**
 
 ---
+
+## 🛠️ Instalación y ejecución local
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/telleznadim/pawsathome.git
+cd pawsathome
+```
+
+### 2. Crear y activar un entorno virtual
+
+```bash
+# En Linux o Mac
+python -m venv env
+source env/bin/activate
+
+# En Windows
+python -m venv env
+env\Scripts\activate
+```
+
+### 3. Instalar las dependencias de Python
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Instalar Tailwind CSS y dependencias de Node.js
+
+```bash
+cd theme
+npm install
+cd ..
+```
+
+### 5. Aplicar migraciones y ejecutar el servidor
+
+```bash
+python manage.py migrate
+python manage.py runserver
+Luego accede a: http://localhost:8000
+```
