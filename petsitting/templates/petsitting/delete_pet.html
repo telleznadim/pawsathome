@@ -1,0 +1,12 @@
+{% extends "base/base.html" %}
+{% block content %}
+<div class="max-w-xl mx-auto p-4 text-center">
+    <h1 class="text-xl font-bold mb-4">¿Eliminar Mascota?</h1>
+    <p class="mb-4">¿Estás seguro de que quieres eliminar <strong>{{ pet.name }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">Sí, eliminar</button>
+        <a href="{% url 'pet_list' %}" class="ml-4 text-gray-600">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

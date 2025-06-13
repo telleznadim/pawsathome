@@ -1,0 +1,123 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="max-w-lg mx-auto mt-12">
+    <h1 class="text-3xl font-bold text-dark-green mb-6 text-center">Editar Perfil</h1>
+
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Profile Photo (Only for Sitters) -->
+        {% if user.user_type == "sitter" and user.petsitterprofile.photo %}
+        <div class="flex items-center space-x-6">
+            <div class="flex flex-col items-center">
+                <p class="text-gray-600 text-sm mb-2">Foto actual:</p>
+                <img src="{{ user.petsitterprofile.photo.url }}" alt="Foto actual del cuidador"
+                    class="w-32 h-32 object-cover rounded-lg shadow-md">
+                
+                <div class="flex items-center space-x-2 mt-2">
+                    <input type="checkbox" name="photo-clear" id="photo-clear_id" class="w-5 h-5 accent-medium-green">
+                    <label for="photo-clear_id" class="text-gray-700 text-sm">Eliminar foto</label>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <p class="text-gray-600 text-sm mb-2">Subir nueva foto:</p>
+                <input type="file" name="photo" accept="image/*" id="id_photo"
+                    class="border border-gray-400 bg-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-medium-green">
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Common Fields -->
+        <div class="flex flex-col">
+            <label for="id_email" class="text-medium-green font-semibold mb-2">Email</label>
+            {{ form.email }}
+        </div>
+
+        <!-- Owner Fields -->
+        {% if user.user_type == "owner" %}
+        <div class="flex flex-col">
+            <label for="id_phone_number" class="text-medium-green font-semibold mb-2">Número de Teléfono</label>
+            {{ form.phone_number }}
+        </div>
+
+        <div class="flex flex-col">
+            <label for="id_address" class="text-medium-green font-semibold mb-2">Dirección</label>
+            {{ form.address }}
+        </div>
+        {% endif %}
+
+        <!-- Sitter Fields -->
+        {% if user.user_type == "sitter" %}
+        <div class="flex flex-col">
+            <label for="id_bio" class="text-medium-green font-semibold mb-2">Bio</label>
+            {{ form.bio }}
+        </div>
+
+        <div class="flex flex-col">
+            <label for="id_experience_years" class="text-medium-green font-semibold mb-2">Años de Experiencia</label>
+            {{ form.experience_years }}
+        </div>
+
+        <div class="flex flex-col">
+            <label for="id_hourly_rate" class="text-medium-green font-semibold mb-2">Tarifa por Hora</label>
+            {{ form.hourly_rate }}
+        </div>
+
+        <div class="flex flex-col">
+            <label for="id_city" class="text-medium-green font-semibold mb-2">Ciudad</label>
+            {{ form.city }}
+        </div>
+        {% endif %}
+
+        <div class="flex justify-center">
+            <button type="submit"
+                class="px-6 py-2 bg-medium-green text-white font-semibold rounded-lg shadow-md hover:bg-dark-green transition">
+                Guardar
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Apply Tailwind styles directly to form fields */
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="file"],
+    select,
+    textarea {
+        width: 100%;
+        border: 1px solid #9CA3AF;
+        /* Gray border */
+        background-color: #F3F4F6;
+        /* Light gray background */
+        border-radius: 8px;
+        /* Rounded corners */
+        padding: 10px;
+        /* Spacing inside the field */
+        font-size: 16px;
+        /* Readable text */
+        outline: none;
+        /* Remove default outline */
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* Focus effect */
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--color-medium-green);
+        box-shadow: 0 0 4px var(--color-medium-green);
+    }
+
+    /* Style checkboxes */
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: var(--color-medium-green);
+        /* Green checkbox */
+    }
+</style>
+{% endblock %}

@@ -15,18 +15,64 @@
     <!-- Navbar -->
     <nav class="bg-white shadow p-4">
         <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
             <a href="{% url 'home' %}" class="flex items-center space-x-2">
                 <img src="{% static 'images/logo_512.png' %}" alt="Paws at Home" class="h-10 w-auto">
                 <span class="text-2xl font-bold text-medium-green hover:text-gray-950">Paws at Home</span>
             </a>
-            <div class="space-x-4">
+    
+            <!-- Nav Links -->
+            <div class="space-x-4 flex items-center">
                 <a href="{% url 'home' %}" class="hover:text-green-500">Inicio</a>
                 <a href="{% url 'about' %}" class="hover:text-green-500">Nosotros</a>
-                <a href="{% url 'sitters' %}" class="hover:text-green-500">Cuidadores</a>
-                <a href="{% url 'pets' %}" class="hover:text-green-500">Mascotas</a>
+                {% if request.user.is_authenticated and request.user.petsitterprofile %}
+                    <a href="{% url 'job_inbox' %}" class="hover:text-green-500">Asignados</a>
+                {% endif %}
+
+
+                
+                {% if request.user.is_authenticated and request.user.petownerprofile %}
+                    <a href="{% url 'sitter_list' %}" class="hover:text-green-500">Cuidadores</a>
+                    <a href="{% url 'pet_list' %}" class="hover:text-green-500">Mis Mascotas</a>
+                    <a href="{% url 'job_outbox' %}" class="hover:text-green-500">Peticiones</a>
+                {% endif %}
+    
+                {% if user.is_authenticated %}
+                <!-- Avatar dropdown -->
+                <div class="relative group">
+                    <!-- Avatar Button -->
+                    <button class="flex items-center focus:outline-none">
+                        {% if avatar_url %}
+                        <img src="{{ avatar_url }}" class="h-10 w-10 rounded-full border-2 border-gray-300 hover:border-medium-green">
+                        {% else %}
+                        <img src="{% static 'images/avatar_default.jpg' %}"
+                            class="h-10 w-10 rounded-full border-2 border-gray-300 hover:border-medium-green">
+                        {% endif %}
+                    </button>
+                
+                    <!-- Dropdown Menu (placed within same group container) -->
+                    <div
+                        class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Editar Perfil</a>
+                        <a href="{% url 'agregar_Avatar' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cambiar Avatar</a>
+                        <form id="logout-form" method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Cerrar
+                                Sesión</button>
+                        </form>
+                    </div>          
+                </div>
+                {% else %}
+                <a href="{% url 'login' %}" class="bg-medium-green hover:bg-green-800 text-white px-4 py-2 rounded">
+                    Iniciar Sesión
+                </a>
+                <a href="{% url 'register' %}" class="bg-dark-green text-white px-4 py-2 rounded hover:bg-cyan-950">
+                    Registrarse
+                </a>
+                {% endif %}
             </div>
         </div>
-    </nav>
+        </nav>
 
     <!-- Content -->
     <main class="container mx-auto py-8">

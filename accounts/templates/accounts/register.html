@@ -1,0 +1,147 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="max-w-lg mx-auto mt-12 bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-3xl font-bold text-dark-green mb-6 text-center">Registro</h2>
+
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <!-- USER TYPE -->
+        <div class="flex flex-col">
+            <label for="id_user_type" class="text-medium-green font-semibold mb-2">Registrate Como</label>
+            {{ form.user_type }}
+        </div>
+
+        <!-- COMMON FIELDS -->
+        <div class="flex flex-col">
+            <label for="id_username" class="text-medium-green font-semibold mb-2">Usuario</label>
+            {{ form.username }}
+        </div>
+
+        <div class="flex flex-col">
+            <label for="id_email" class="text-medium-green font-semibold mb-2">Email</label>
+            {{ form.email }}
+        </div>
+
+        <div class="flex flex-col">
+            <label for="id_password1" class="text-medium-green font-semibold mb-2">Contraseña</label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="flex flex-col">
+            <label for="id_password2" class="text-medium-green font-semibold mb-2">Confirma Tu Contraseña</label>
+            {{ form.password2 }}
+        </div>
+
+        <!-- OWNER FIELDS -->
+        <div id="owner-fields" class="hidden space-y-4">
+            <div class="flex flex-col">
+                <label for="id_phone_number" class="text-medium-green font-semibold mb-2">Número de Teléfono</label>
+                {{ form.phone_number }}
+            </div>
+
+            <div class="flex flex-col">
+                <label for="id_address" class="text-medium-green font-semibold mb-2">Dirección</label>
+                {{ form.address }}
+            </div>
+        </div>
+
+        <!-- SITTER FIELDS -->
+        <div id="sitter-fields" class="hidden space-y-4">
+            <div class="flex flex-col">
+                <label for="id_bio" class="text-medium-green font-semibold mb-2">Bio</label>
+                {{ form.bio }}
+            </div>
+
+            <div class="flex flex-col">
+                <label for="id_experience_years" class="text-medium-green font-semibold mb-2">Años de
+                    Experiencia</label>
+                {{ form.experience_years }}
+            </div>
+
+            <div class="flex flex-col">
+                <label for="id_hourly_rate" class="text-medium-green font-semibold mb-2">Tarifa por Hora</label>
+                {{ form.hourly_rate }}
+            </div>
+
+            <div class="flex flex-col">
+                <label for="id_available" class="text-medium-green font-semibold mb-2">Disponible</label>
+                {{ form.available }}
+            </div>
+
+            <div class="flex flex-col">
+                <label for="id_photo" class="text-medium-green font-semibold mb-2">Foto</label>
+                {{ form.photo }}
+            </div>
+            
+            <div class="flex flex-col">
+                <label for="id_city" class="text-medium-green font-semibold mb-2">Ciudad</label>
+                {{ form.city }}  </div>
+        </div>
+
+        <div class="flex justify-center">
+            <button type="submit"
+                class="px-6 py-2 bg-medium-green text-white font-semibold rounded-lg shadow-md hover:bg-dark-green transition">
+                Registrate
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Apply Tailwind styles directly to form fields */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        border: 1px solid #9CA3AF;
+        /* Gray border */
+        background-color: #F3F4F6;
+        /* Light gray background */
+        border-radius: 8px;
+        /* Rounded corners */
+        padding: 10px;
+        /* Spacing inside the field */
+        font-size: 16px;
+        /* Readable text */
+        outline: none;
+        /* Remove default outline */
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* Focus effect */
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--color-medium-green);
+        box-shadow: 0 0 4px var(--color-medium-green);
+    }
+
+    /* Style checkboxes */
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: var(--color-medium-green); /* Green checkbox */
+    }
+</style>
+
+<script>
+    const userTypeSelect = document.getElementById('id_user_type');
+    const ownerFields = document.getElementById('owner-fields');
+    const sitterFields = document.getElementById('sitter-fields');
+
+    function toggleFields() {
+        const type = userTypeSelect.value;
+        ownerFields.classList.toggle('hidden', type !== 'owner');
+        sitterFields.classList.toggle('hidden', type !== 'sitter');
+    }
+
+    userTypeSelect.addEventListener('change', toggleFields);
+    window.addEventListener('DOMContentLoaded', toggleFields);  // Run on page load
+</script>
+{% endblock %}

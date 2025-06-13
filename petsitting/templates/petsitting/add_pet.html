@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="max-w-lg mx-auto mt-12">
+    <h2 class="text-3xl font-bold text-dark-green mb-6 text-center">Agregar Mascota</h2>
+
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="flex flex-col">
+            <label for="{{ field.id_for_label }}" class="text-medium-green font-semibold mb-2">
+                {{ field.label }}
+            </label>
+            {{ field }}
+            {% if field.errors %}
+            <p class="text-red-600 text-sm mt-1">{{ field.errors }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="flex justify-center">
+            <button type="submit"
+                class="px-6 py-2 bg-medium-green text-white font-semibold rounded-lg shadow-md hover:bg-light-green transition">
+                Guardar Mascota
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Apply Tailwind styles directly to form fields */
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="file"],
+    select,
+    textarea {
+        width: 100%;
+        border: 1px solid #9CA3AF;
+        /* Gray border */
+        background-color: #F3F4F6;
+        /* Light gray background */
+        border-radius: 8px;
+        /* Rounded corners */
+        padding: 10px;
+        /* Spacing inside the field */
+        font-size: 16px;
+        /* Readable text */
+        outline: none;
+        /* Remove default outline */
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* Focus effect */
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--color-medium-green);
+        box-shadow: 0 0 4px var(--color-medium-green);
+    }
+</style>
+{% endblock %}

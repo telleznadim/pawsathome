@@ -1,8 +1,68 @@
 {% extends "base/base.html" %}
 
-{% block title %}Nosotros - Paws at Home{% endblock %}
+{% load static %}
 
 {% block content %}
-<h1 class="text-3xl font-bold">Nosotros</h1>
-<p>Esta es una plataforma para encontrar cuidadores de mascotas.</p>
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto text-center py-16 px-6">
+    <h1 class="text-5xl font-bold text-medium-green mb-4">Sobre Nosotros</h1>
+    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Somos un equipo apasionado por la tecnología y el desarrollo web. Creemos en la innovación, el aprendizaje
+        continuo y la creación de soluciones eficientes.
+    </p>
+</section>
+
+<!-- Developer Profiles -->
+<section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6 pb-16">
+    <!-- Estudiante -->
+    <div
+        class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-200 transition transform hover:scale-105">
+        <img src="{% static 'images/student_1.jpg' %}" alt="Estudiante"
+            class="w-48 h-48 object-cover rounded-full border-4 border-medium-green shadow-md mb-6">
+        <h2 class="text-3xl font-semibold text-medium-green mb-2">Estudiante</h2>
+        <p class="text-gray-600 text-lg leading-relaxed text-justify mb-4">
+            Soy un estudiante entusiasta dando mis primeros pasos en el mundo de la programación. Me apasiona aprender
+            cosas nuevas
+            cada día y trabajar en proyectos reales que me ayuden a crecer como desarrollador. Además de programación,
+            también
+            estudio idiomas y tengo pensado empezar una carrera profesional en Ingeniería de Sistemas para seguir
+            profundizando en
+            el mundo de la tecnología.
+        </p>
+        <div class="text-left text-gray-700">
+            <p class="text-gray-600 font-semibold"><strong>Hobbies:</strong> Hacer ejercicio, Estudiar,
+                video juegos.</p>
+            <p class="text-gray-600 font-semibold"><strong>Intereses:</strong> Aprender a programar, idiomas
+                , cuidado animal.</p>
+            <p class="text-gray-600 font-semibold"><strong>Dato curioso:</strong> Mi primer programa fue un juego de
+                reaccion en VUE.</p>
+        </div>
+    </div>
+
+    <!-- Profesional -->
+    <div
+        class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-200 transition transform hover:scale-105">
+        <img src="{% static 'images/student_2.jpg' %}" alt="Desarrollador con experiencia"
+            class="w-48 h-48 object-cover rounded-full border-4 border-medium-green shadow-md mb-6">
+        <h2 class="text-3xl font-semibold text-medium-green mb-2">Ingeniero de Datos y Profesor de Programación</h2>
+        <p class="text-gray-600 text-lg leading-relaxed text-justify mb-4">
+            Llevo más de diez años trabajando con datos, creando procesos ETL escalables y aplicaciones basadas en
+            información. Me
+            encanta aprender y mejorar constantemente, ya sea con experiencia práctica o por cuenta propia. También he
+            sido profesor
+            de programación web y otros temas de informática en varias universidades de Colombia, compartiendo lo que sé
+            con quienes
+            empiezan en
+            este mundo.
+        </p>
+        <div class="text-left text-gray-700">
+            <p class="text-gray-600 font-semibold"><strong>Hobbies:</strong> Instrumentos Musicales, Gaming.
+            </p>
+            <p class="text-gray-600 font-semibold"><strong>Intereses:</strong> Computadores en general, Familia,
+                Rescate Animal</p>
+            <p class="text-gray-600 font-semibold"><strong>Dato curioso:</strong> A mi esposa y a mi nos gusta mucho
+                rescatar y cuidar animales de la calle. Tenemos 3 gaticos y 3 perritos hoy en día.</p>
+        </div>
+    </div>
+</section>
 {% endblock %}

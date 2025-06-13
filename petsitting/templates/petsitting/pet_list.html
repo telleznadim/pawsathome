@@ -1,0 +1,56 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-dark-green mb-6 text-center">Mis Mascotas</h1>
+
+    <div class="flex justify-center mb-6">
+        <a href="{% url 'add_pet' %}"
+            class="bg-medium-green hover:bg-light-green text-white font-semibold px-5 py-2 rounded-lg shadow-md transition">
+            Agregar Mascota
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for pet in pets %}
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden p-4 flex flex-col items-center">
+            {% if pet.photo %}
+            <img src="{{ pet.photo.url }}" alt="{{ pet.name }}" class="w-40 h-40 object-cover rounded-lg shadow-md">
+            {% else %}
+            <img src="{% static 'images/pet_default.png' %}" alt="No photo"
+                class="w-40 h-40 object-cover rounded-lg shadow-md">
+            {% endif %}
+
+            <div class="text-center mt-4">
+                <h2 class="text-xl font-bold text-dark-green">{{ pet.name }}</h2>
+                <p class="text-gray-600">{{ pet.species }} ({{ pet.age }} años)</p>
+                <p class="text-gray-500 mt-2">{{ pet.notes }}</p>
+            </div>
+
+            <div class="mt-4 flex space-x-3">
+                <a href="{% url 'edit_pet' pet.pk %}"
+                    class="px-4 py-2 bg-medium-green text-white rounded-lg shadow-md hover:bg-light-green transition">
+                    Editar
+                </a>
+
+                <form action="{% url 'delete_pet' pet.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit"
+                        class="px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition"
+                        onclick="return confirm('¿Estás seguro de eliminar esta mascota?')">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-span-full text-center text-gray-500 text-lg">
+            No tienes mascotas registradas.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+

@@ -51,9 +51,14 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'accounts',
     'petsitting',
+    'widget_tweaks',
 ]
 
 TAILWIND_APP_NAME = 'theme'
+
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.context_processors.avatar_context'
             ],
         },
     },
@@ -115,6 +121,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# settings for log in and log out
+
+LOGIN_REDIRECT_URL = 'job_list'
+LOGOUT_REDIRECT_URL = 'login'
+
+LOGIN_URL = '/accounts/login/'  # or whatever your login path is
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

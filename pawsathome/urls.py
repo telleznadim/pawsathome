@@ -17,15 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
+from . import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('sitters/', TemplateView.as_view(template_name='sitters.html'), name='sitters'),
-    path('pets/', TemplateView.as_view(template_name='pets.html'), name='pets'),
-
-    path('test-tailwind/', TemplateView.as_view(template_name='base.html'),
-         name='test_tailwind'),
+    # path('sitters/', TemplateView.as_view(template_name='sitters.html'), name='sitters'),
+    # path('pets/', TemplateView.as_view(template_name='pets.html'), name='pets'),
+    path('accounts/', include('accounts.urls')),
+    path('pets_sitting/', include('petsitting.urls')),
+    # path('test-tailwind/', TemplateView.as_view(template_name='base.html'),
+    #      name='test_tailwind'),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

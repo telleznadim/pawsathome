@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="flex justify-center items-center h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 class="text-3xl font-bold text-dark-green mb-6 text-center">Bienvenido de Vuelta</h2>
+
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+            <p class="text-red-500 text-sm text-center">{{ form.non_field_errors }}</p>
+            {% endif %}
+
+            <div class="flex flex-col">
+                <label for="{{ form.username.id_for_label }}" class="text-medium-green font-semibold mb-2">
+                    Usuario
+                </label>
+                <input type="text" name="{{ form.username.html_name }}" id="{{ form.username.id_for_label }}"
+                    value="{{ form.username.value|default_if_none:'' }}"
+                    class="w-full border border-gray-400 bg-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-medium-green">
+                {% if form.username.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.username.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div class="flex flex-col">
+                <label for="{{ form.password.id_for_label }}" class="text-medium-green font-semibold mb-2">
+                    Contraseña
+                </label>
+                <input type="password" name="{{ form.password.html_name }}" id="{{ form.password.id_for_label }}"
+                    class="w-full border border-gray-400 bg-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-medium-green">
+                {% if form.password.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.password.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <button type="submit"
+                class="w-full bg-medium-green hover:bg-dark-green text-white font-semibold py-2 px-4 rounded-lg shadow-md transition">
+                Iniciar Sesión
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

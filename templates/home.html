@@ -16,10 +16,14 @@
             <div class="carousel flex w-full h-full transition-all duration-700 ease-in-out cursor-pointer">
                 <!-- Images will fill the container -->
                 <img src="{% static 'images/carousel1.webp' %}" alt="Mascota 1" class="w-full h-full object-cover">
-                <img src="{% static 'images/carousel2.webp' %}" alt="Mascota 2" class="w-full h-full object-cover hidden">
-                <img src="{% static 'images/carousel3.webp' %}" alt="Mascota 3" class="w-full h-full object-cover hidden">
+                <img src="{% static 'images/carousel2.webp' %}" alt="Mascota 2"
+                    class="w-full h-full object-cover hidden">
+                <img src="{% static 'images/carousel3.webp' %}" alt="Mascota 3"
+                    class="w-full h-full object-cover hidden">
+                <img src="{% static 'images/carousel4.webp' %}" alt="Mascota 4"
+                    class="w-full h-full object-cover hidden">
             </div>
-            
+
         </div>
 
         <div class="flex justify-center mt-4 space-x-2" id="carousel-dots">
@@ -31,6 +35,39 @@
     <div class="flex flex-col items-center space-y-4">
         <img src="{% static 'images/logo_512.png' %}" alt="Paws at Home Logo" class="w-20 h-20">
         <h1 class="text-3xl font-bold text-medium-green text-center">Bienvenido a Paws at Home</h1>
+    </div>
+
+    <!-- User Type Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mt-12">
+        <!-- Pet Owner Card -->
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 flex flex-col items-center text-center">
+            <img src="{% static 'images/pet_owner.webp' %}" alt="Pet Owner"
+                class="w-32 h-32 object-cover rounded-full border-4 border-medium-green shadow-md mb-4">
+            <h2 class="text-2xl font-semibold text-dark-green mb-2">¿Eres dueño de una mascota?</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-4">
+                Únete a nuestra plataforma y encuentra el cuidador perfecto para tu mascota. Explora perfiles, revisa
+                calificaciones y elige el mejor servicio.
+            </p>
+            <a href="{% url 'register' %}"
+                class="px-6 py-2 bg-medium-green text-white font-semibold rounded-lg shadow-md hover:bg-dark-green transition">
+                Regístrate
+            </a>
+        </div>
+
+        <!-- Pet Sitter Card -->
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 flex flex-col items-center text-center">
+            <img src="{% static 'images/pet_sitter.jpg' %}" alt="Pet Sitter"
+                class="w-32 h-32 object-cover rounded-full border-4 border-medium-green shadow-md mb-4">
+            <h2 class="text-2xl font-semibold text-dark-green mb-2">¿Quieres ser cuidador?</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-4">
+                Ingresa a nuestra plataforma y conviértete en un cuidador. Ofrece tus servicios, conecta con dueños de
+                mascotas y genera ingresos haciendo lo que amas.
+            </p>
+            <a href="{% url 'register' %}"
+                class="px-6 py-2 bg-medium-green text-white font-semibold rounded-lg shadow-md hover:bg-dark-green transition">
+                Regístrate
+            </a>
+        </div>
     </div>
 
 </div>

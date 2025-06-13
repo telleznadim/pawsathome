@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="max-w-lg mx-auto mt-12">
+    <h1 class="text-3xl font-bold text-dark-green mb-6 text-center">Trabajos Asignados</h1>
+
+    {% if job_requests %}
+    <div class="space-y-6">
+        {% for job in job_requests %}
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold text-medium-green">Solicitud de {{ job.owner.user.username }}</h2>
+
+            <p class="text-gray-700"><strong>Mascotas:</strong> {{ job.pets.all|join:", " }}</p>
+            <p class="text-gray-700"><strong>Inicio:</strong> {{ job.start_date }} - <strong>Fin:</strong>
+                {{ job.end_date }}</p>
+
+            <!-- Status Badge -->
+            <p class="text-gray-700"><strong>Estado:</strong></p>
+            <span class="px-4 py-1 rounded-md text-white text-sm inline-block mt-1
+                {% if job.status == 'pending' %} bg-yellow-500 
+                {% elif job.status == 'accepted' %} bg-green-500 
+                {% elif job.status == 'declined' %} bg-red-500 
+                {% elif job.status == 'completed' %} bg-blue-500 
+                {% else %} bg-gray-500 {% endif %}">
+                {{ job.status }}
+            </span>
+
+            <!-- Edit Status Button (Now Below the Badge) -->
+            <div class="mt-4">
+                <a href="{% url 'update_job_status' job.id %}"
+                    class="px-4 py-2 bg-medium-green text-white font-semibold rounded-lg shadow-md hover:bg-dark-green transition">
+                    Editar Estado
+                </a>
+            </div>
+
+            {% if job.message %}
+            <p class="mt-4 text-gray-600 italic">"{{ job.message }}"</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center text-gray-500 text-lg mt-6">No tienes solicitudes de trabajo aún.</p>
+    {% endif %}
+</div>
+{% endblock %}
