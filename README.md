@@ -4,6 +4,11 @@
 
 **Paws at Home**
 
+## 👨‍💻 Autores / Desarrolladores
+
+- **Daniel Triana**
+- **Nadim Tellez**
+
 ---
 
 ## 🎯 Objetivo funcional
@@ -66,7 +71,7 @@ Solicitudes de servicio entre dueño y cuidador, con:
 | 1. Diseño/Template no usado en clase con 4 opciones de menú          | ✅ Sí      | Menú superior con: Inicio, Mascotas, Cuidadores, Login/Register, y más                   |
 | 2. Login / Logout / Registro / Modificación de usuarios (con avatar) | ✅ Sí      | Login, Logout, Registro con selección de tipo (owner/sitter) y carga de imagen de perfil |
 | 3. CRUD de al menos 4 modelos, solo para usuarios logueados          | ✅ Sí      | CRUD completo para: Pet, PetOwnerProfile, PetSitterProfile y JobRequest                  |
-| 4. Página “Acerca de mí” con información del alumno                  | ✅ Sí      | Se encuentra en el sitio como página estática (acerca_de_mi.html)                        |
+| 4. Página “Acerca de mí” con información del alumno                  | ✅ Sí      | Se encuentra en el sitio como página estática (about.html)                               |
 | 5. Filtro de búsqueda (opcional)                                     | ✅ Sí      | Filtro de cuidadores por ciudad en la lista de Pet Sitters                               |
 
 ---
